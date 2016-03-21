@@ -64,11 +64,12 @@ CharacterVector normalise_addr(CharacterVector addresses){
       } else {
         output[i] = std::string(expansions[0]);
       }
+
+      expansion_array_destroy(expansions, num_expansions);
       
     }
   }
   
-  expansion_array_destroy(expansions, num_expansions);
   
   return output;
 }
