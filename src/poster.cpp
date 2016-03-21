@@ -5,7 +5,7 @@ using namespace Rcpp;
 // Consistently set up and end usage.
 //[[Rcpp::export]]
 void setup() {
-  if (!libpostal_setup() || !libpostal_setup_language_classifier()) {
+  if (!libpostal_setup() || !libpostal_setup_language_classifier() || !libpostal_setup_parser()) {
     throw std::runtime_error("Libbpostal setup failed");
   }
 }
@@ -14,6 +14,7 @@ void setup() {
 void end() {
   libpostal_teardown();
   libpostal_teardown_language_classifier();
+  libpostal_teardown_parser();
 }
 
 //'@title Normalise postal addresses
