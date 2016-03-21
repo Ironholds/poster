@@ -9,7 +9,6 @@ void setup() {
     throw std::runtime_error("Libbpostal setup failed");
   }
 }
-
 //[[Rcpp::export]]
 void end() {
   libpostal_teardown();
@@ -100,49 +99,49 @@ DataFrame parse_addr(CharacterVector addresses){
   
   for(unsigned int i; i < input_size; i++){
     address_parser_response_t *parsed = parse_address((char*) addresses[i], options);
-    // for (unsigned int n = 0; n < parsed->num_components; n++) {
-    //   
-    //   // Optimise this by using an enum
-    //   if(std::string(parsed->labels[n]) == "house"){
-    //     house[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "house_number"){
-    //     house_number[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "road"){
-    //     road[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "suburb"){
-    //     suburb[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "city_district"){
-    //     city_district[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "city"){
-    //     city[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "state_district"){
-    //     state_district[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "state"){
-    //     state[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "postal_code"){
-    //     postal_code[n] = isna(parsed->components[n]);
-    //   }
-    //   
-    //   if(std::string(parsed->labels[n]) == "country"){
-    //     country[n] = isna(parsed->components[n]);
-    //   }
-    // }
+    for (unsigned int n = 0; n < parsed->num_components; n++) {
+      
+      // Optimise this by using an enum
+      if(std::string(parsed->labels[n]) == "house"){
+        house[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "house_number"){
+        house_number[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "road"){
+        road[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "suburb"){
+        suburb[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "city_district"){
+        city_district[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "city"){
+        city[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "state_district"){
+        state_district[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "state"){
+        state[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "postal_code"){
+        postal_code[i] = isna(parsed->components[n]);
+      }
+      
+      if(std::string(parsed->labels[n]) == "country"){
+        country[i] = isna(parsed->components[n]);
+      }
+    }
     address_parser_response_destroy(parsed);
   }
   
