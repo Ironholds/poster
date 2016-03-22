@@ -57,3 +57,11 @@ parse_addr <- function(addresses) {
     .Call('poster_parse_addr', PACKAGE = 'poster', addresses)
 }
 
+get_elements_ <- function(addresses, element) {
+    .Call('poster_get_elements_', PACKAGE = 'poster', addresses, element)
+}
+
+set_elements_ <- function(addresses, replacement, element) {
+    .Call('poster_set_elements_', PACKAGE = 'poster', addresses, replacement, element)
+}
+

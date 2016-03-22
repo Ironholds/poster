@@ -45,3 +45,28 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// get_elements_
+CharacterVector get_elements_(CharacterVector addresses, int element);
+RcppExport SEXP poster_get_elements_(SEXP addressesSEXP, SEXP elementSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< CharacterVector >::type addresses(addressesSEXP);
+    Rcpp::traits::input_parameter< int >::type element(elementSEXP);
+    __result = Rcpp::wrap(get_elements_(addresses, element));
+    return __result;
+END_RCPP
+}
+// set_elements_
+CharacterVector set_elements_(CharacterVector addresses, CharacterVector replacement, int element);
+RcppExport SEXP poster_set_elements_(SEXP addressesSEXP, SEXP replacementSEXP, SEXP elementSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< CharacterVector >::type addresses(addressesSEXP);
+    Rcpp::traits::input_parameter< CharacterVector >::type replacement(replacementSEXP);
+    Rcpp::traits::input_parameter< int >::type element(elementSEXP);
+    __result = Rcpp::wrap(set_elements_(addresses, replacement, element));
+    return __result;
+END_RCPP
+}
