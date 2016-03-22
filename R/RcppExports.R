@@ -33,6 +33,24 @@ normalise_addr <- function(addresses) {
     .Call('poster_normalise_addr', PACKAGE = 'poster', addresses)
 }
 
+#'@title Parse street addresses
+#'@description \code{parse_addr} parses street addresses into
+#'their component parts, producing the addresses' house name,
+#'number, road and suburb, city district and city, state district
+#'and state, postal code, and country.
+#'
+#'@param addresses a character vector of addresses to parse.
+#'
+#'@return a data.frame of 10 columns; \code{house}, \code{house_number},
+#'\code{road}, \code{suburb}, \code{city_district}, \code{city},
+#'\code{state_district}, \code{state}, \code{postal_code},
+#'\code{country}. Values not found in the address are represented
+#'with \code{NA}s
+#'
+#'@examples
+#'parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA")
+#'
+#'@export
 parse_addr <- function(addresses) {
     .Call('poster_parse_addr', PACKAGE = 'poster', addresses)
 }

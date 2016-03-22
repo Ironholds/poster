@@ -80,6 +80,24 @@ String isna(std::string x){
   return x;
 }
 
+//'@title Parse street addresses
+//'@description \code{parse_addr} parses street addresses into
+//'their component parts, producing the addresses' house name,
+//'number, road and suburb, city district and city, state district
+//'and state, postal code, and country.
+//'
+//'@param addresses a character vector of addresses to parse.
+//'
+//'@return a data.frame of 10 columns; \code{house}, \code{house_number},
+//'\code{road}, \code{suburb}, \code{city_district}, \code{city},
+//'\code{state_district}, \code{state}, \code{postal_code},
+//'\code{country}. Values not found in the address are represented
+//'with \code{NA}s
+//'
+//'@examples
+//'parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA")
+//'
+//'@export
 //[[Rcpp::export]]
 DataFrame parse_addr(CharacterVector addresses){
   
@@ -100,6 +118,10 @@ DataFrame parse_addr(CharacterVector addresses){
   for(unsigned int i; i < input_size; i++){
     address_parser_response_t *parsed = parse_address((char*) addresses[i], options);
     for (unsigned int n = 0; n < parsed->num_components; n++) {
+      
+      if((i % 10000) == 0){
+        Rcpp::checkUserInterrupt();
+      }
       
       // Optimise this by using an enum
       if(std::string(parsed->labels[n]) == "house"){
