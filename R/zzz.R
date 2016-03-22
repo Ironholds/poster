@@ -1,9 +1,9 @@
 .onLoad <- function(libname, pkgname){
-  poster:::setup()
+  setup()
   return(invisible())
 }
 
 .onUnload <- function(libpath){
-  poster:::end()
+  end()
   return(invisible())
 }
