@@ -1,12 +1,12 @@
 Package: poster
 Type: Package
-Title: What the package does (short line)
-Version: 1.0
-Date: 2016-02-25
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
+Title: Street Address Normalisation and Parsing
+Version: 0.1.0
+Date: 2016-03-22
+Author: Oliver Keyes [aut, cre], Al Barrentine [ctb]
+Maintainer: Oliver Keyes <ironholds@gmail.com>
 Description: More about what it does (maybe more than one line)
-License: What license is it under?
+License: MIT + file LICENSE
 LinkingTo: Rcpp
 Imports:
     Rcpp

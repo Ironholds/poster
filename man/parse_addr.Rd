@@ -26,4 +26,7 @@ and state, postal code, and country.
 parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA")
 
 }
+\seealso{
+\code{\link{normalise_addr}} for normalising addresses.
+}
 
