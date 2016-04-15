@@ -23,7 +23,7 @@ normalise_addr("fourty seven love lane pinner")
 # [1] "47 love lane pinner"
 
 # Normalise a French one
-normalise_addr("Quatre-vignt-douze Ave des Champs-Élysées")
+normalise_addr("Quatre-vingt-douze Ave des Champs-Élysées")
 # "92 avenue des champs-elysees"
 
 }
