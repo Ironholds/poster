@@ -43,8 +43,9 @@ examples.
 }
 \examples{
 #Get a component
+\dontrun{
 example_address <- "The Deaconage, 781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA"
 house(example_address)
-
+}
 }
 

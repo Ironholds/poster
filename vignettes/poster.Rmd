@@ -1,13 +1,11 @@
----
-title: "Using the Poster Package"
-author: "Oliver Keyes"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Using the Poster Package}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{poster}
+-->
+
+# Using the poster package
+
+[libpostal](https://github.com/openvenues/libpostal) is a postal address parser written in C - and `poster` is a wrapper around it, allowing you to parse and normalise addresses from R.
 
 ## Installation
 

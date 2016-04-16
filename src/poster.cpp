@@ -25,13 +25,15 @@ void end() {
 //'
 //'@examples
 //'# Normalise an English address!
+//'\dontrun{
 //'normalise_addr("fourty seven love lane pinner")
 //'# [1] "47 love lane pinner"
-//'
+//'}
 //'# Normalise a French one
+//'\dontrun{
 //'normalise_addr("Quatre-vignt-douze Ave des Champs-Élysées")
 //'# "92 avenue des champs-elysees"
-//'
+//'}
 //'@seealso \code{\link{parse_addr}} for parsing addresses.
 //'@export
 //[[Rcpp::export]]
@@ -55,8 +57,9 @@ CharacterVector normalise_addr(CharacterVector addresses){
 //'with \code{NA}s
 //'
 //'@examples
+//'\dontrun{
 //'str(parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA"))
-//'
+//'}
 //'# 'data.frame':	1 obs. of  10 variables:
 //'#   $ house         : chr NA
 //'#   $ house_number  : chr "781"
@@ -68,6 +71,7 @@ CharacterVector normalise_addr(CharacterVector addresses){
 //'#   $ state         : chr "ny"
 //'#   $ postal_code   : chr NA
 //'#   $ country       : chr "usa"
+//'
 //'@seealso \code{\link{normalise_addr}} for normalising addresses.
 //'
 //'@export
