@@ -21,3 +21,4 @@ Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
 OS_type: unix
+NeedsCompilation: yes
