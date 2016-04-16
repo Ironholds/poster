@@ -3147,14 +3147,12 @@ fi
 done
 
 
-for ac_header in libpostal/libpostal.h
-do :
-  ac_fn_c_check_header_mongrel "$LINENO" "libpostal/libpostal.h" "ac_cv_header_libpostal_libpostal_h" "$ac_includes_default"
+ac_fn_c_check_header_mongrel "$LINENO" "libpostal/libpostal.h" "ac_cv_header_libpostal_libpostal_h" "$ac_includes_default"
 if test "x$ac_cv_header_libpostal_libpostal_h" = xyes; then :
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBPOSTAL_LIBPOSTAL_H 1
-_ACEOF
+
+else
+  as_fn_error $? "Couldn't find libpostal. Please install it - https://github.com/openvenues/libpostal" "$LINENO" 5
 
 fi
 
-done
+
