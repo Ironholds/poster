@@ -11,6 +11,61 @@ vignette: >
 
 ## Installation
 
+Installing `poster` is pretty easy - just run `install_github` or `install.packages` as appropriate - as long as you've got `libpostal` on your system. Installing libpostal can be done with the following; on Linux:
+
+```
+sudo apt-get install curl libsnappy-dev autoconf automake libtool pkg-config
+git clone https://github.com/openvenues/libpostal
+cd libpostal
+./bootstrap.sh
+./configure --datadir=[...some dir with a few GB of space...]
+make
+sudo make install
+sudo ldconfig
+```
+
+On Macs:
+
+```
+sudo brew install snappy autoconf automake libtool pkg-config
+git clone https://github.com/openvenues/libpostal
+cd libpostal
+./bootstrap.sh
+./configure --datadir=[...some dir with a few GB of space...]
+make
+sudo make install
+```
+
+`libpostal` doesn't run on Windows - and correspondingly `poster` won't.
+
 ## Features
 
+The fastest and simplest feature of `poster` is an address normaliser, which does what it says on the tin: uses statistics to try and turn the awkward, vague, inconsistent addresses human beings put into forms into a standard format. This can be handled with the `normalise_addr` function:
+
+```{r, eval=FALSE}
+normalise_addr("Quatre-vignt-douze Ave des Champs-Élysées")
+[1] "4-vignt-12 avenue des champs-elysees"
+```
+
+More importantly, `poster` can also *parse* addresses, standardising it and splitting it up into everything from the house name or number to the postal code and country:
+
+```{r, eval=FALSE}
+str(parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA"))
+'data.frame':	1 obs. of  10 variables:
+ $ house         : chr NA
+ $ house_number  : chr "781"
+ $ road          : chr "franklin ave"
+ $ suburb        : chr "crown heights"
+ $ city_district : chr "brooklyn"
+ $ city          : chr "nyc"
+ $ state_district: chr NA
+ $ state         : chr "ny"
+ $ postal_code   : chr NA
+ $ country       : chr "usa"
+```
+
+As well as parse the entire address, you can also extract individual elements: there are functions with names matching the columns in `parse_addr`'s output (`house`, `house_number`, `country`) that extract those individual elements.
+
 ## Issues and suggestions
+
+If you have ideas for other functionality, the best approach is to either [request it](https://github.com/Ironholds/poster/issues) or [add it](https://github.com/Ironholds/poster/pulls)!

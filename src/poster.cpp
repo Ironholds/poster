@@ -15,7 +15,7 @@ void end() {
 }
 
 //'@title Normalise postal addresses
-//'@description \code{\link{normalise_addr}} takes street
+//'@description \code{normalise_addr} takes street
 //'addresses and normalises them within the context of a specific
 //'country or language. It currently recognises 60 different locales.
 //'
@@ -55,8 +55,19 @@ CharacterVector normalise_addr(CharacterVector addresses){
 //'with \code{NA}s
 //'
 //'@examples
-//'parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA")
+//'str(parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA"))
 //'
+//'# 'data.frame':	1 obs. of  10 variables:
+//'#   $ house         : chr NA
+//'#   $ house_number  : chr "781"
+//'#   $ road          : chr "franklin ave"
+//'#   $ suburb        : chr "crown heights"
+//'#   $ city_district : chr "brooklyn"
+//'#   $ city          : chr "nyc"
+//'#   $ state_district: chr NA
+//'#   $ state         : chr "ny"
+//'#   $ postal_code   : chr NA
+//'#   $ country       : chr "usa"
 //'@seealso \code{\link{normalise_addr}} for normalising addresses.
 //'
 //'@export

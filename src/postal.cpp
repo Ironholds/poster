@@ -141,7 +141,8 @@ DataFrame poster_internal::parse_addr(CharacterVector addresses){
                            _["state_district"] = state_district,
                            _["state"] = state,
                            _["postal_code"] = postal_code,
-                           _["country"] = country);
+                           _["country"] = country,
+                           _["stringsAsFactors"] = false);
 }
 
 CharacterVector poster_internal::get_elements(CharacterVector addresses, int element){

@@ -13,7 +13,7 @@ normalise_addr(addresses)
 a character vector of normalised addresses.
 }
 \description{
-\code{\link{normalise_addr}} takes street
+\code{normalise_addr} takes street
 addresses and normalises them within the context of a specific
 country or language. It currently recognises 60 different locales.
 }
