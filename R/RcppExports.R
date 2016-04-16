@@ -24,7 +24,7 @@ end <- function() {
 #'# [1] "47 love lane pinner"
 #'
 #'# Normalise a French one
-#'normalise_addr("Quatre-vingt-douze Ave des Champs-Élysées")
+#'normalise_addr("Quatre-vignt-douze Ave des Champs-Élysées")
 #'# "92 avenue des champs-elysees"
 #'
 #'@seealso \code{\link{parse_addr}} for parsing addresses.
