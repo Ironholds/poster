@@ -2,9 +2,7 @@
 
 __Author:__ Oliver Keyes, Al Barrentine <br/>
 __License:__ [MIT](http://opensource.org/licenses/MIT)<br/>
-__Status:__ In development
-
-![downloads](http://cranlogs.r-pkg.org/badges/grand-total/poster)
+__Status:__ Stable
 
 ### Description
 
@@ -21,7 +19,7 @@ By participating in this project you agree to abide by its terms.
 
 ### Installation
 
-Poster isn't yet on CRAN (although it will be!) but it is stable. To get the development version:
+Poster isn't on CRAN (they don't like dependencies they don't have) but it is stable. To get it:
 
     devtools::install_github("ironholds/poster")
 
