@@ -7,16 +7,12 @@ String poster_internal::isna(std::string x){
   return x;
 }
 
-
 CharacterVector poster_internal::parse_single(String x, address_parser_options_t& opts){
   
   CharacterVector output(10, NA_STRING);
   address_parser_response_t *parsed = parse_address((char*) x.get_cstring(), opts);
   std::string holding;
   for (unsigned int n = 0; n < parsed->num_components; n++) {
-    if(n < 10){
-      output[n] = parsed->components[n];
-    }
     holding = parsed->labels[n];
     // Optimise this by using an enum
     if(holding == "house"){
