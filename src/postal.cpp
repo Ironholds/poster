@@ -7,54 +7,59 @@ String poster_internal::isna(std::string x){
   return x;
 }
 
+
 CharacterVector poster_internal::parse_single(String x, address_parser_options_t& opts){
   
   CharacterVector output(10, NA_STRING);
   address_parser_response_t *parsed = parse_address((char*) x.get_cstring(), opts);
-  
+  std::string holding;
   for (unsigned int n = 0; n < parsed->num_components; n++) {
-    
+    if(n < 10){
+      output[n] = parsed->components[n];
+    }
+    holding = parsed->labels[n];
     // Optimise this by using an enum
-    if(std::string(parsed->labels[n]) == "house"){
+    if(holding == "house"){
       output[0] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "house_number"){
+    if(holding == "house_number"){
       output[1] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "road"){
+    if(holding == "road"){
       output[2] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "suburb"){
+    if(holding == "suburb"){
       output[3] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "city_district"){
+    if(holding == "city_district"){
       output[4] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "city"){
+    if(holding == "city"){
       output[5] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "state_district"){
+    if(holding == "state_district"){
       output[6] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "state"){
+    if(holding == "state"){
       output[7] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "postal_code"){
+    if(holding == "postal_code"){
       output[8] = isna(parsed->components[n]);
     }
     
-    if(std::string(parsed->labels[n]) == "country"){
+    if(holding == "country"){
       output[9] = isna(parsed->components[n]);
     }
   }
+
   address_parser_response_destroy(parsed);
   return output;
 }
@@ -109,27 +114,60 @@ DataFrame poster_internal::parse_addr(CharacterVector addresses){
   CharacterVector country(input_size, NA_STRING);
   CharacterVector holding;
   address_parser_options_t options = get_libpostal_address_parser_default_options();
-  address_parser_options_t& opt_ref = options;
-  
-  for(unsigned int i; i < input_size; i++){
+
+  for(unsigned int i = 0; i < input_size; i++){
     if((i % 10000) == 0){
       Rcpp::checkUserInterrupt();
     }
-    
     if(addresses[i] != NA_STRING){
-      holding = parse_single(addresses[i], opt_ref);
-      house[i] = holding[0];
-      house_number[i] = holding[1];
-      road[i] = holding[2];
-      suburb[i] = holding[3];
-      city_district[i] = holding[4];
-      city[i] = holding[5];
-      state_district[i] = holding[6];
-      state[i] = holding[7];
-      postal_code[i] = holding[8];
-      country[i] = holding[9];
+      address_parser_response_t *parsed = parse_address((char*) addresses[i],
+                                                        options);
+      std::string holding;
+      for (unsigned int n = 0; n < parsed->num_components; n++) {
+        holding = parsed->labels[n];
+        // Optimise this by using an enum
+        if(holding == "house"){
+          house[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "house_number"){
+          house_number[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "road"){
+          road[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "suburb"){
+          suburb[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "city_district"){
+          city_district[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "city"){
+          city[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "state_district"){
+          state_district[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "state"){
+          state[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "postal_code"){
+          postal_code[i] = isna(parsed->components[n]);
+        }
+        
+        if(holding == "country"){
+          country[i] = isna(parsed->components[n]);
+        }
+      }
+      address_parser_response_destroy(parsed);
     }
-  
   }
   
   return DataFrame::create(_["house"] = house,
@@ -153,7 +191,7 @@ CharacterVector poster_internal::get_elements(CharacterVector addresses, int ele
   address_parser_options_t options = get_libpostal_address_parser_default_options();
   address_parser_options_t& opt_ref = options;
   
-  for(unsigned int i; i < input_size; i++){
+  for(unsigned int i = 0; i < input_size; i++){
     if((i % 10000) == 0){
       Rcpp::checkUserInterrupt();
     }
@@ -182,7 +220,7 @@ CharacterVector poster_internal::set_elements(CharacterVector addresses, Charact
     if(new_value[0] == NA_STRING){
       return addresses;
     }
-    for(unsigned int i; i < input_size; i++){
+    for(unsigned int i = 0; i < input_size; i++){
       if((i % 10000) == 0){
         Rcpp::checkUserInterrupt();
       }
@@ -202,7 +240,7 @@ CharacterVector poster_internal::set_elements(CharacterVector addresses, Charact
       }
     }
   } else if(new_value.size() == input_size){
-    for(unsigned int i; i < input_size; i++){
+    for(unsigned int i = 0; i < input_size; i++){
       if((i % 10000) == 0){
         Rcpp::checkUserInterrupt();
       }
