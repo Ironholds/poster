@@ -47,7 +47,7 @@ CharacterVector poster_internal::parse_single(String x, address_parser_options_t
       output[7] = isna(parsed->components[n]);
     }
     
-    if(holding == "postal_code"){
+    if(holding == "postcode"){
       output[8] = isna(parsed->components[n]);
     }
     
@@ -154,7 +154,7 @@ DataFrame poster_internal::parse_addr(CharacterVector addresses){
           state[i] = isna(parsed->components[n]);
         }
         
-        if(holding == "postal_code"){
+        if(holding == "postcode"){
           postal_code[i] = isna(parsed->components[n]);
         }
         
