@@ -30,7 +30,7 @@ enum {
     PARSER_LABEL_WORLD_REGION
 };
 
-CharacterVector poster_internal::parse_single(String x, address_parser_options_t& opts){
+CharacterVector poster_internal::parse_single(String x, libpostal_address_parser_options_t& opts){
   CharacterVector output(10, NA_STRING);
   libpostal_address_parser_response_t *parsed = libpostal_parse_address((char*) x.get_cstring(), opts);
   std::string holding;
@@ -108,7 +108,7 @@ CharacterVector poster_internal::address_normalise(CharacterVector addresses){
   
   unsigned int input_size = addresses.size();
   CharacterVector output(input_size);
-  normalize_options_t options = libpostal_get_default_options();
+  libpostal_normalize_options_t options = libpostal_get_default_options();
   size_t num_expansions;
   char **expansions;
   
@@ -171,7 +171,7 @@ DataFrame poster_internal::parse_addr(CharacterVector addresses){
       Rcpp::checkUserInterrupt();
     }
     if(addresses[i] != NA_STRING){
-      address_parser_response_t *parsed = libpostal_parse_address((char*) addresses[i],
+      libpostal_address_parser_response_t *parsed = libpostal_parse_address((char*) addresses[i],
                                                                   options);
       std::string holding;
       for (unsigned int n = 0; n < parsed->num_components; n++) {
@@ -259,7 +259,7 @@ DataFrame poster_internal::parse_addr(CharacterVector addresses){
                            _["island"] = island,
                            _["state_district"] = state_district,
                            _["state"] = state,
-                           _["postal_code"] = postcode,
+                           _["postal_code"] = postal_code,
                            _["country_region"] = country_region,
                            _["country"] = country,
                            _["world_region"] = world_region,

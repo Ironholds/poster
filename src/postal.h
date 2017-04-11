@@ -12,7 +12,7 @@ private:
   
   String isna(std::string x);
   
-  CharacterVector parse_single(String x, address_parser_options_t& opts);
+  CharacterVector parse_single(String x, libpostal_address_parser_options_t& opts);
   
 public:
   
