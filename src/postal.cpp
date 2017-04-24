@@ -139,7 +139,7 @@ CharacterVector poster_internal::address_normalise(CharacterVector addresses){
   return output;
 }
 
-DataFrame poster_internal::parse_addr(CharacterVector addresses){
+List poster_internal::parse_addr(CharacterVector addresses){
   
   unsigned int input_size = addresses.size();
   CharacterVector house(input_size, NA_STRING);
@@ -171,8 +171,7 @@ DataFrame poster_internal::parse_addr(CharacterVector addresses){
       Rcpp::checkUserInterrupt();
     }
     if(addresses[i] != NA_STRING){
-      libpostal_address_parser_response_t *parsed = libpostal_parse_address((char*) addresses[i],
-                                                                  options);
+      libpostal_address_parser_response_t *parsed = libpostal_parse_address((char*) addresses[i], options);
       std::string holding;
       for (unsigned int n = 0; n < parsed->num_components; n++) {
         holding = parsed->labels[n];
@@ -242,28 +241,32 @@ DataFrame poster_internal::parse_addr(CharacterVector addresses){
       libpostal_address_parser_response_destroy(parsed);
     }
   }
-
-  return DataFrame::create(_["house"] = house,
-                           _["category"] = category,
-                           _["near"] = near,
-                           _["house_number"] = house_number,
-                           _["road"] = road,
-                           _["unit"] = unit,
-                           _["level"] = level,
-                           _["staircase"] = staircase,
-                           _["entrance"] = entrance,
-                           _["po_box"] = po_box,
-                           _["suburb"] = suburb,
-                           _["city_district"] = city_district,
-                           _["city"] = city,
-                           _["island"] = island,
-                           _["state_district"] = state_district,
-                           _["state"] = state,
-                           _["postal_code"] = postal_code,
-                           _["country_region"] = country_region,
-                           _["country"] = country,
-                           _["world_region"] = world_region,
-                           _["stringsAsFactors"] = false);
+  
+  List out;
+  out["house"] = house;
+  out["category"] = category;
+  out["near"] = near;
+  out["house_number"] = house_number;
+  out["road"] = road;
+  out["unit"] = unit;
+  out["level"] = level;
+  out["staircase"] = staircase;
+  out["entrance"] = entrance;
+  out["po_box"] = po_box;
+  out["suburb"] = suburb;
+  out["city_district"] = city_district;
+  out["city"] = city;
+  out["island"] = island;
+  out["state_district"] = state_district;
+  out["state"] = state;
+  out["postal_code"] = postal_code;
+  out["country_region"] = country_region;
+  out["country"] = country;
+  out["world_region"] = world_region;
+  out.attr("class") = "data.frame";
+  IntegerVector rownames = Rcpp::seq(1,addresses.size());
+  out.attr("row.names") = rownames;
+  return out;
 }
 
 CharacterVector poster_internal::get_elements(CharacterVector addresses, int element){

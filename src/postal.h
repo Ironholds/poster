@@ -11,14 +11,14 @@ class poster_internal {
 private:
   
   String isna(std::string x);
-  
+
   CharacterVector parse_single(String x, libpostal_address_parser_options_t& opts);
   
 public:
   
   CharacterVector address_normalise(CharacterVector addresses);
   
-  DataFrame parse_addr(CharacterVector addresses);
+  List parse_addr(CharacterVector addresses);
   
   CharacterVector get_elements(CharacterVector addresses, int element);
   
