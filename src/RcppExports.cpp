@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // setup
 void setup();
-RcppExport SEXP poster_setup() {
+RcppExport SEXP _poster_setup() {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     setup();
@@ -16,7 +16,7 @@ END_RCPP
 }
 // end
 void end();
-RcppExport SEXP poster_end() {
+RcppExport SEXP _poster_end() {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     end();
@@ -25,7 +25,7 @@ END_RCPP
 }
 // normalise_addr
 CharacterVector normalise_addr(CharacterVector addresses);
-RcppExport SEXP poster_normalise_addr(SEXP addressesSEXP) {
+RcppExport SEXP _poster_normalise_addr(SEXP addressesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -36,7 +36,7 @@ END_RCPP
 }
 // parse_addr
 DataFrame parse_addr(CharacterVector addresses);
-RcppExport SEXP poster_parse_addr(SEXP addressesSEXP) {
+RcppExport SEXP _poster_parse_addr(SEXP addressesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -47,7 +47,7 @@ END_RCPP
 }
 // get_elements_
 CharacterVector get_elements_(CharacterVector addresses, int element);
-RcppExport SEXP poster_get_elements_(SEXP addressesSEXP, SEXP elementSEXP) {
+RcppExport SEXP _poster_get_elements_(SEXP addressesSEXP, SEXP elementSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -59,7 +59,7 @@ END_RCPP
 }
 // set_elements_
 CharacterVector set_elements_(CharacterVector addresses, CharacterVector replacement, int element);
-RcppExport SEXP poster_set_elements_(SEXP addressesSEXP, SEXP replacementSEXP, SEXP elementSEXP) {
+RcppExport SEXP _poster_set_elements_(SEXP addressesSEXP, SEXP replacementSEXP, SEXP elementSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;

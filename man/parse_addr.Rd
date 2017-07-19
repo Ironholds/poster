@@ -10,10 +10,13 @@ parse_addr(addresses)
 \item{addresses}{a character vector of addresses to parse.}
 }
 \value{
-a data.frame of 10 columns; \code{house}, \code{house_number},
-\code{road}, \code{suburb}, \code{city_district}, \code{city},
+a data.frame of 20 columns; \code{house}, \code{category},
+\code{near}, \code{house_number}, \code{road}, \code{unit},
+\code{level}, \code{staircase}, \code{entrance}, \code{po_box},
+\code{suburb}, \code{city_district}, \code{city},
 \code{state_district}, \code{state}, \code{postal_code},
-\code{country}. Values not found in the address are represented
+\code{country_region}, \code{country}, \code{world_region}. 
+Values not found in the address are represented
 with \code{NA}s
 }
 \description{
@@ -27,19 +30,27 @@ and state, postal code, and country.
 str(parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA"))
 }
 # 'data.frame':	1 obs. of  10 variables:
-#   $ house         : chr NA
-#   $ house_number  : chr "781"
-#   $ road          : chr "franklin ave"
-#   $ suburb        : chr "crown heights"
-#   $ city_district : chr "brooklyn"
-#   $ city          : chr "nyc"
-#   $ state_district: chr NA
-#   $ state         : chr "ny"
-#   $ postal_code   : chr NA
-#   $ country       : chr "usa"
+#   $ house          : chr NA
+#   $ category       : chr NA
+#   $ near           : chr NA
+#   $ house_number   : chr "781"
+#   $ road           : chr "franklin ave"
+#   $ unit           : chr NA
+#   $ level          : chr NA
+#   $ staircase      : chr NA
+#   $ entrance       : chr NA
+#   $ po_box         : chr NA
+#   $ suburb         : chr "crown heights"
+#   $ city_district  : chr "brooklyn"
+#   $ city           : chr "nyc"
+#   $ state_district : chr NA
+#   $ state          : chr "ny"
+#   $ postal_code    : chr NA
+#   $ country_region : chr NA
+#   $ country        : chr "usa"
+#   $ world_region   : chr NA
 
 }
 \seealso{
 \code{\link{normalise_addr}} for normalising addresses.
 }
-

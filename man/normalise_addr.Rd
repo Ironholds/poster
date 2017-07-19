@@ -32,4 +32,3 @@ normalise_addr("Quatre-vignt-douze Ave des Champs-Élysées")
 \seealso{
 \code{\link{parse_addr}} for parsing addresses.
 }
-

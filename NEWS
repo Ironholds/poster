@@ -1,4 +1,11 @@
+Version 0.3.0
+-------------------------------------------------------------------------
+* Function registration included
+* New libpostal version used
+
+
 Version 0.2.0
+-------------------------------------------------------------------------
 
 * Stable, fully tested release.
 

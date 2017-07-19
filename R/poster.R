@@ -6,7 +6,7 @@
 #' web-related datasets, such as server-side logs.
 #' 
 #' @seealso the \href{http://cran.rstudio.com/web/packages/urltools/vignettes/urltools.html}{package vignette}.
-#' @useDynLib poster
+#' @useDynLib poster, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @docType package
 #' @aliases poster poster-package

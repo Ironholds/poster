@@ -4,6 +4,7 @@
 \name{poster}
 \alias{poster}
 \alias{poster-package}
+\alias{poster-package}
 \title{Tools for handling URLs}
 \description{
 This package provides functions for URL encoding and decoding,
@@ -14,4 +15,3 @@ web-related datasets, such as server-side logs.
 \seealso{
 the \href{http://cran.rstudio.com/web/packages/urltools/vignettes/urltools.html}{package vignette}.
 }
-

@@ -2,11 +2,11 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 setup <- function() {
-    invisible(.Call('poster_setup', PACKAGE = 'poster'))
+    invisible(.Call(`_poster_setup`))
 }
 
 end <- function() {
-    invisible(.Call('poster_end', PACKAGE = 'poster'))
+    invisible(.Call(`_poster_end`))
 }
 
 #'@title Normalise postal addresses
@@ -32,7 +32,7 @@ end <- function() {
 #'@seealso \code{\link{parse_addr}} for parsing addresses.
 #'@export
 normalise_addr <- function(addresses) {
-    .Call('poster_normalise_addr', PACKAGE = 'poster', addresses)
+    .Call(`_poster_normalise_addr`, addresses)
 }
 
 #'@title Parse street addresses
@@ -81,14 +81,14 @@ normalise_addr <- function(addresses) {
 #'
 #'@export
 parse_addr <- function(addresses) {
-    .Call('poster_parse_addr', PACKAGE = 'poster', addresses)
+    .Call(`_poster_parse_addr`, addresses)
 }
 
 get_elements_ <- function(addresses, element) {
-    .Call('poster_get_elements_', PACKAGE = 'poster', addresses, element)
+    .Call(`_poster_get_elements_`, addresses, element)
 }
 
 set_elements_ <- function(addresses, replacement, element) {
-    .Call('poster_set_elements_', PACKAGE = 'poster', addresses, replacement, element)
+    .Call(`_poster_set_elements_`, addresses, replacement, element)
 }
 

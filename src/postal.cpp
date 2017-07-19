@@ -30,8 +30,12 @@ enum {
     PARSER_LABEL_WORLD_REGION
 };
 
+// What if we..
+// For each address, parse it, throw the parsed results into a vector
+// 
+
 CharacterVector poster_internal::parse_single(String x, libpostal_address_parser_options_t& opts){
-  CharacterVector output(10, NA_STRING);
+  CharacterVector output(20, NA_STRING);
   libpostal_address_parser_response_t *parsed = libpostal_parse_address((char*) x.get_cstring(), opts);
   std::string holding;
   for (unsigned int n = 0; n < parsed->num_components; n++) {

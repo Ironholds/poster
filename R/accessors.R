@@ -21,53 +21,53 @@ house <- function(x){
 #'@rdname accessors
 #'@export
 house_number <- function(x){
-  return(get_elements_(x, 1))
+  return(get_elements_(x, 3))
 }
 
 #'@rdname accessors
 #'@export
 road <- function(x){
-  return(get_elements_(x, 2))
-}
-
-#'@rdname accessors
-#'@export
-suburb <- function(x){
-  return(get_elements_(x, 3))
-}
-#'@rdname accessors
-#'@export
-city_district <- function(x){
   return(get_elements_(x, 4))
 }
 
 #'@rdname accessors
 #'@export
+suburb <- function(x){
+  return(get_elements_(x, 11))
+}
+#'@rdname accessors
+#'@export
+city_district <- function(x){
+  return(get_elements_(x, 12))
+}
+
+#'@rdname accessors
+#'@export
 city <- function(x){
-  return(get_elements_(x, 5))
+  return(get_elements_(x, 13))
 }
 
 #'@rdname accessors
 #'@export
 state_district <- function(x){
-  return(get_elements_(x, 6))
+  return(get_elements_(x, 15))
 }
 
 #'@rdname accessors
 #'@export
 state <- function(x){
-  return(get_elements_(x, 7))
+  return(get_elements_(x, 16))
 }
 
 #'@rdname accessors
 #'@export
 postal_code <- function(x){
-  return(get_elements_(x, 8))
+  return(get_elements_(x, 10))
 }
 
 
 #'@rdname accessors
 #'@export
 country <- function(x){
-  return(get_elements_(x, 9))
+  return(get_elements_(x, 18))
 }
