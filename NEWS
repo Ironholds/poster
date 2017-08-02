@@ -1,8 +1,8 @@
 Version 0.3.0
 -------------------------------------------------------------------------
-* Function registration included
-* New libpostal version used
 
+* The new libpostal version, which features more fields, is now supported!
+* Functions are registered with R for slightly speedier call times
 
 Version 0.2.0
 -------------------------------------------------------------------------
