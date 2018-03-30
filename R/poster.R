@@ -1,11 +1,11 @@
 #' @title Tools for handling URLs
 #' @name poster
-#' @description This package provides functions for URL encoding and decoding,
-#' parsing, and parameter extraction, designed to be both fast and
-#' entirely vectorised. It is intended to be useful for people dealing with
-#' web-related datasets, such as server-side logs.
+#' @description Normalise street addresses, or parse them, extracting house
+#'   number, street name, post code and various other elements of a street
+#'   address. Requires (and is built around) the libpostal library
+#'   ('https://github.com/openvenues/libpostal').
 #' 
-#' @seealso the \href{http://cran.rstudio.com/web/packages/urltools/vignettes/urltools.html}{package vignette}.
+#' @seealso the package \code{vignette("Address Parsing with Poster", package = "poster")}.
 #' @useDynLib poster, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @docType package
