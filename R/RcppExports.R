@@ -35,6 +35,32 @@ normalise_addr <- function(addresses) {
     .Call(`_poster_normalise_addr`, addresses)
 }
 
+#'@title Expand postal addresses
+#'@description \code{expand_addr} takes street
+#'addresses and expands them to one or more normalised strings
+#'within the context of a specific
+#'country or language. It currently recognises 60 different locales.
+#'
+#'@param addresses a character vector of addresses to normalise
+#'
+#'@return a character vector of normalised addresses.
+#'
+#'@examples
+#'# expand an English address!
+#'\dontrun{
+#'expand_addr("fourty seven love lane pinner")
+#'# [1] "47 love lane pinner"
+#'}
+#'# Normalise a French one
+#'\dontrun{
+#'expand_addr("Quatre-vignt-douze Ave des Champs-Élysées")
+#'# "92 avenue des champs-elysees"
+#'}
+#'@seealso \code{\link{parse_addr}} for parsing addresses.
+expand_addr <- function(addresses) {
+    .Call(`_poster_expand_addr`, addresses)
+}
+
 #'@title Parse street addresses
 #'@description \code{parse_addr} parses street addresses into
 #'their component parts, producing the addresses' house name,
