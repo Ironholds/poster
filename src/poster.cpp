@@ -36,7 +36,7 @@ void end() {
 //'}
 //'@seealso \code{\link{parse_addr}} for parsing addresses.
 //'@export
-//[[Rcpp::export]]
+// [[Rcpp::export]]
 CharacterVector normalise_addr(CharacterVector addresses){
   poster_internal pinst;
   return pinst.address_normalise(addresses);
@@ -50,7 +50,7 @@ CharacterVector normalise_addr(CharacterVector addresses){
 //'
 //'@param addresses a character vector of addresses to normalise
 //'
-//'@return a character vector of normalised addresses.
+//'@return a list of character vectors of expanded addresses.
 //'
 //'@examples
 //'# expand an English address!
@@ -64,10 +64,11 @@ CharacterVector normalise_addr(CharacterVector addresses){
 //'# "92 avenue des champs-elysees"
 //'}
 //'@seealso \code{\link{parse_addr}} for parsing addresses.
-//[[Rcpp::export]]
-CharacterVector expand_addr(CharacterVector addresses){
+//'@export
+// [[Rcpp::export]]
+List expand_addr(CharacterVector addresses){
   poster_internal pinst;
-  return pinst.address_normalise(addresses);
+  return pinst.expand_addr(addresses);
 }
 
 

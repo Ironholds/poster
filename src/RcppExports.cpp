@@ -40,7 +40,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // expand_addr
-CharacterVector expand_addr(CharacterVector addresses);
+List expand_addr(CharacterVector addresses);
 RcppExport SEXP _poster_expand_addr(SEXP addressesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

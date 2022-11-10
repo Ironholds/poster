@@ -43,7 +43,7 @@ normalise_addr <- function(addresses) {
 #'
 #'@param addresses a character vector of addresses to normalise
 #'
-#'@return a character vector of normalised addresses.
+#'@return a list of character vectors of expanded addresses.
 #'
 #'@examples
 #'# expand an English address!
@@ -57,6 +57,7 @@ normalise_addr <- function(addresses) {
 #'# "92 avenue des champs-elysees"
 #'}
 #'@seealso \code{\link{parse_addr}} for parsing addresses.
+#'@export
 expand_addr <- function(addresses) {
     .Call(`_poster_expand_addr`, addresses)
 }

@@ -143,6 +143,43 @@ CharacterVector poster_internal::address_normalise(CharacterVector addresses){
   return output;
 }
 
+List poster_internal::expand_addr(CharacterVector addresses){
+  
+  unsigned int input_size = addresses.size();
+  libpostal_normalize_options_t options = libpostal_get_default_options();
+  size_t num_expansions;
+  char **expansions;
+  List output(input_size);
+  std::string msg="No expansion - returning original for element ";
+  
+  for(unsigned int i = 0; i < input_size; i++){
+    
+    if((i % 10000) == 0){
+      Rcpp::checkUserInterrupt();
+    }
+    
+    if(addresses[i] == NA_STRING){
+      output[i] = CharacterVector(1, NA_STRING);
+    } else {
+      expansions = libpostal_expand_address(addresses[i], options, &num_expansions);
+      CharacterVector theexpansion(std::max<size_t>(1, num_expansions));
+      if(num_expansions == 0){
+        std::string MSG = msg + std::to_string(i+1) +"\n"; 
+        R_ShowMessage(MSG.c_str());
+        theexpansion[0] = addresses[i];
+      } else {
+        for (unsigned int ex = 0; ex < num_expansions; ex++) {
+        theexpansion[ex] = std::string(expansions[ex]);
+        }
+      }
+      output[i] = theexpansion;
+      libpostal_expansion_array_destroy(expansions, num_expansions);
+      
+    }
+  }
+  return output;
+}
+
 List poster_internal::parse_addr(CharacterVector addresses){
   
   unsigned int input_size = addresses.size();

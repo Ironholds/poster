@@ -23,6 +23,12 @@ Poster isn't on CRAN (they don't like dependencies they don't have) but it is st
 
     devtools::install_github("ironholds/poster")
 
+or
+
+    devtools::install_github("ironholds/poster", build_vignettes=TRUE)
+
+to create the vignette
+
 Note, of course, the dependencies, and make sure you have [libpostal](https://github.com/openvenues/libpostal)
 installed first.
 
