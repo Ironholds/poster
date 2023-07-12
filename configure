@@ -15,6 +15,8 @@ PKG_LIBS="-lpostal"
 if [ $(command -v pkg-config) ]; then
   PKGCONFIG_CFLAGS=$(pkg-config --cflags $PKG_CONFIG_NAME)
   PKGCONFIG_LIBS=$(pkg-config --libs $PKG_CONFIG_NAME)
+  RPATH_DIR=$(pkg-config --libs-only-L $PKG_CONFIG_NAME)
+  RPATH_DIR=${RPATH_DIR/-L/}
 fi
 
 # Note that cflags may be empty in case of success
@@ -26,6 +28,11 @@ elif [ "$PKGCONFIG_CFLAGS" ] || [ "$PKGCONFIG_LIBS" ]; then
   echo "Found pkg-config cflags and libs!"
   PKG_CFLAGS=${PKGCONFIG_CFLAGS}
   PKG_LIBS=${PKGCONFIG_LIBS}
+fi
+
+if [ "$SETRPATH" ]; then
+  echo "Found SETRPATH - extracting from pkgconfig - $RPATH_DIR"
+  PKG_LIBS="${PKG_LIBS} -Wl,-rpath ${RPATH_DIR}"
 fi
 
 # Find compiler

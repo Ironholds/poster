@@ -12,7 +12,7 @@ License: MIT + file LICENSE
 LinkingTo: Rcpp
 Imports:
     Rcpp
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.2
 SystemRequirements: libpostal ('https://github.com/openvenues/libpostal')
 Encoding: UTF-8
 URL: https://github.com/Ironholds/poster/

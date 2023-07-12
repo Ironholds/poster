@@ -47,8 +47,26 @@ sudo make install
 The fastest and simplest feature of `poster` is an address normaliser, which does what it says on the tin: uses statistics to try and turn the awkward, vague, inconsistent addresses human beings put into forms into a standard format. This can be handled with the `normalise_addr` function:
 
 ```{r, eval=FALSE}
-normalise_addr("Quatre-vignt-douze Ave des Champs-Élysées")
-[1] "4-vignt-12 avenue des champs-elysees"
+normalise_addr("Quatre-vingt-douze Ave des Champs-Élysées")
+[1] "92 avenue des champs-elysees"
+```
+
+In addition it is possible to generate a set of likely expansions of an address (`normalise_addr` returns
+the first of the expansions).
+
+```{r, eval=FALSE}
+library(tidyverse)
+h <- tibble(ID=c(1,2), address=c("Quatre-vingt-douze Ave des Champs-Élysées", "fourty seven love lane pinner"))
+h <- mutate(h, expansions=expand_addr(address))
+# unnest the list column
+unnest(h, cols=c(expansions))
+# A tibble: 4 × 3
+     ID address                                   expansions                  
+  <dbl> <chr>                                     <chr>                       
+1     1 Quatre-vingt-douze Ave des Champs-Élysées 92 avenue des champs-elysees
+2     1 Quatre-vingt-douze Ave des Champs-Élysées 92 avenue des champs elysees
+3     1 Quatre-vingt-douze Ave des Champs-Élysées 92 avenue des champselysees 
+4     2 fourty seven love lane pinner             47 love lane pinner
 ```
 
 More importantly, `poster` can also *parse* addresses, standardising it and splitting it up into everything from the house name or number to the postal code and country:
@@ -69,6 +87,7 @@ str(parse_addr("781 Franklin Ave Crown Heights Brooklyn NYC NY 11216 USA"))
 ```
 
 As well as parse the entire address, you can also extract individual elements: there are functions with names matching the columns in `parse_addr`'s output (`house`, `house_number`, `country`) that extract those individual elements.
+
 
 ## Issues and suggestions
 

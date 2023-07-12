@@ -20,3 +20,5 @@ inst/doc
 *.status
 *.cache
 Makevars
+/doc/
+/Meta/

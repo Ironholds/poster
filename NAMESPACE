@@ -3,6 +3,7 @@
 export(city)
 export(city_district)
 export(country)
+export(expand_addr)
 export(house)
 export(house_number)
 export(normalise_addr)

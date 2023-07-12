@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // setup
 void setup();
 RcppExport SEXP _poster_setup() {
@@ -31,6 +36,17 @@ BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< CharacterVector >::type addresses(addressesSEXP);
     rcpp_result_gen = Rcpp::wrap(normalise_addr(addresses));
+    return rcpp_result_gen;
+END_RCPP
+}
+// expand_addr
+List expand_addr(CharacterVector addresses);
+RcppExport SEXP _poster_expand_addr(SEXP addressesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< CharacterVector >::type addresses(addressesSEXP);
+    rcpp_result_gen = Rcpp::wrap(expand_addr(addresses));
     return rcpp_result_gen;
 END_RCPP
 }

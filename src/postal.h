@@ -18,6 +18,8 @@ public:
   
   CharacterVector address_normalise(CharacterVector addresses);
   
+  List expand_addr(CharacterVector addresses);
+
   List parse_addr(CharacterVector addresses);
   
   CharacterVector get_elements(CharacterVector addresses, int element);
